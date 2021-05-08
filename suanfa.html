@@ -304,6 +304,50 @@
     }).then(res=>{
         console.log(res,'手动实现promise')
     })
+
+
+
+    //手动实现new()
+
+    function myNew(){
+        let obj = {};
+        let _construct = [].shift.call(arguments);
+        obj.__proto__=_construct.prototype;
+        let res = _construct.apply(obj,arguments);
+        return res instanceof Object?res:obj
+    }
+
+    //字符串全排列
+
+    var perm = function(s) {
+    var result = [];
+    if (s.length <= 1) {
+      return [s];
+    } else {
+      for (var i = 0; i < s.length; i++) {
+        var c = s[i];
+        var newStr = s.slice(0, i) + s.slice(i + 1, s.length);
+        var l = perm(newStr);
+           
+        for (var j = 0; j < l.length; j++) {
+          var tmp = c + l[j];
+          result.push(tmp);
+        }
+      }
+    }
+    console.log(result)
+    return result;
+  }; 
+  perm('12')
+
+
+
+
+  
+
+    
+
+
     
 
 

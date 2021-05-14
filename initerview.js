@@ -613,7 +613,7 @@ class Observe{
 let subject = new Subject();
 let ob=new Observe()
 subject.addSub(ob)
-subject.update()//update
+subject.notify()//update
 
 
 //vuex和redux的区别

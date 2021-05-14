@@ -266,15 +266,13 @@
 
     console.log(myMapArrResult);
 
-
-
     function mYpromise() {
         this.status = "pending"; // 2.1
         this.msg = ""; // 存储value与reason
         let process = arguments[0],
             that = this;
 
-            console.log(arguments[0])
+        console.log(arguments[0]);
         process(
             function () {
                 that.status = "resolve";
@@ -296,59 +294,85 @@
         }
     };
 
-
-    mYpromise((resolve,reject)=>{
-        setTimeout(()=>{
-            resolve(3)
-        },1000)
-    }).then(res=>{
-        console.log(res,'手动实现promise')
-    })
-
-
+    // mYpromise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         resolve(3);
+    //     }, 1000);
+    // }).then((res) => {
+    //     console.log(res, "手动实现promise");
+    // });
 
     //手动实现new()
 
-    function myNew(){
+    function myNew() {
         let obj = {};
         let _construct = [].shift.call(arguments);
-        obj.__proto__=_construct.prototype;
-        let res = _construct.apply(obj,arguments);
-        return res instanceof Object?res:obj
+        obj.__proto__ = _construct.prototype;
+        let res = _construct.apply(obj, arguments);
+        return res instanceof Object ? res : obj;
     }
 
     //字符串全排列
 
-    var perm = function(s) {
-    var result = [];
-    if (s.length <= 1) {
-      return [s];
-    } else {
-      for (var i = 0; i < s.length; i++) {
-        var c = s[i];
-        var newStr = s.slice(0, i) + s.slice(i + 1, s.length);
-        var l = perm(newStr);
-           
-        for (var j = 0; j < l.length; j++) {
-          var tmp = c + l[j];
-          result.push(tmp);
+    var perm = function (s) {
+        var result = [];
+        if (s.length <= 1) {
+            return [s];
+        } else {
+            for (var i = 0; i < s.length; i++) {
+                var c = s[i];
+                var newStr = s.slice(0, i) + s.slice(i + 1, s.length);
+                var l = perm(newStr);
+
+                for (var j = 0; j < l.length; j++) {
+                    var tmp = c + l[j];
+                    result.push(tmp);
+                }
+            }
         }
-      }
+        console.log(result);
+        return result;
+    };
+    perm("12");
+
+    //找到数组中出现奇数的那个数
+
+    function findQiNum(arr) {
+      
+        for (let i = 0; i < arr.length; i++) {
+            let tempel = arr[i];
+            let temnum = 0;
+            for (let j = 0; j < arr.length; j++) {
+                if (arr[j] == tempel) {
+                    temnum++;
+                }
+            }
+            if ((temnum) % 2 == 1) {
+                return arr[i];
+            }
+        }
+        
     }
-    console.log(result)
-    return result;
-  }; 
-  perm('12')
+
+    console.log(findQiNum([1, 1,3, 3, 3]),'奇数返回值');
 
 
 
 
-  
+
+    var a=[]
+    for(var i=0;i<10;i++){
+        var c=i;
+        a[i]=function(){
+            console.log(c)
+        }
+    }
+    a[6]()
 
     
 
 
-    
+
 
 
 </script>

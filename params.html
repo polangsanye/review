@@ -145,9 +145,9 @@ document.getElementById("close").addEventListener("click", () => {
 function finLongEast(arr){
     let temp = arr[0];
     for(let i=0;i<temp.length;i++){
-        let temp0=temp.charAt(i);
+        let temp0=temp[i];
         for(let j=1;j<arr.length;j++){
-            if(arr[j].charAt(i)!=temp0||i==arr[j].length){
+            if(arr[j][i]!=temp0||i==arr[j].length){
                 return temp.substr(0,i)
             }
         }
